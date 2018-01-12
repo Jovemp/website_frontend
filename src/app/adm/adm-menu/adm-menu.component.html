@@ -1,0 +1,63 @@
+<nav class="navbar navbar-default" *ngIf="isLogado()">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+      <a class="navbar-brand" [routerLink]="['/adm']">Administração</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a [routerLink]="['produto']">Produto</a></li>
+        <li><a [routerLink]="['menu']">Menu</a></li>
+        <li><a [routerLink]="['configuracao']">Configuração</a></li>
+        <li><a (click)="abrirDialogo(mudarSenhaModal)">Altera Senha</a></li>
+        <li><a (click)="logoof()">Sair</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+<!-- /.navbar -->
+<app-modal #mudarSenhaModal id="alteracaodesenha" [showModal]="isModalOpen" [title]="'Alteração de Senha'">
+  <div class="popup-content">
+     <form [formGroup]="senhaForm" novalidate>
+          <div class="form-row">
+            <div class="form-group col col-md-12">
+              <mt-input-contaner label="Senha Atual" errorMessage="Campo Obrigatório">
+                <input name="senhaatual" type="password" placeholder="Senha Atual" class="form-control" formControlName="senhaAtual" autocomplete="off" required>
+              </mt-input-contaner>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col col-md-12">
+              <mt-input-contaner label="Senha Nova" errorMessage="Campo Obrigatório">
+                <input name="senhanova" type="password" placeholder="Senha Nova" class="form-control" formControlName="senhaNova" autocomplete="off" required>
+              </mt-input-contaner>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col col-md-12">
+              <mt-input-contaner label="Confirmação" errorMessage="Campo Obrigatório">
+                <input name="senhaconfirmacao" type="password" placeholder="Confirmação" class="form-control" formControlName="confirmacao" autocomplete="off" required>
+              </mt-input-contaner>
+            </div>
+          </div>
+     </form>
+  </div>
+  <div class="popup-footer">
+    <button class="btn btn-primary"  [disabled]="!senhaForm.valid" aria-label="Close" (click)="alterar(senhaForm.value, mudarSenhaModal)">
+        Alterar
+    </button>
+    <button class="btn btn-danger" aria-label="Close" (click)="mudarSenhaModal.hide()">
+        Cancelar
+    </button>
+  </div>
+</app-modal>

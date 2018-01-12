@@ -1,0 +1,96 @@
+<div class="row">
+
+  <p></p>
+  <p> </p>
+
+  <div class="col-md-10 col-md-offset-1">
+
+    <div class="panel panel-default panel-table">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col col-xs-6">
+            <h3 class="panel-title">Cadastro de Menus</h3>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <form [formGroup]="menuForm" novalidate>
+          <div class="form-row">
+            <div class="form-group col col-md-12">
+              <mt-input-contaner label="Descrição" errorMessage="Campo Obrigatório">
+                <input name="descricao" type="text" placeholder="Descrição" class="form-control" formControlName="descricao" autocomplete="off" required>
+              </mt-input-contaner>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col col-md-12">
+              <mt-input-contaner label="Link" errorMessage="Campo Obrigatório">
+                <input name="link" type="text" placeholder="Link" class="form-control" formControlName="link" autocomplete="off" required>
+              </mt-input-contaner>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col col-md-12">
+              <mt-input-contaner label="Ordem" errorMessage="Campo Obrigatório">
+                <input name="order" type="text" placeholder="Ordem" class="form-control" formControlName="order" autocomplete="off" required>
+              </mt-input-contaner>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col col-md-3">
+              <div class="[ form-group ]">
+                <input type="checkbox" name="tela_principal" id="tela_principal" formControlName="tela_principal" autocomplete="off" />
+                <div class="[ btn-group ]">
+                  <label for="tela_principal" class="[ btn btn-default ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span> </span>
+                </label>
+                  <label for="tela_principal" class="[ btn btn-default active ]">
+                    Tela Principal
+                </label>
+                </div>
+              </div>
+            </div>
+            <div class="col col-md-3">
+              <div class="[ form-group ]">
+                <input type="checkbox" name="lista_produto" id="lista_produto" formControlName="lista_produto" autocomplete="off" />
+                <div class="[ btn-group ]">
+                  <label for="lista_produto" class="[ btn btn-default ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span> </span>
+                </label>
+                  <label for="lista_produto" class="[ btn btn-default active ]">
+                    Listar Produtos
+                </label>
+                </div>
+              </div>
+            </div>
+            <div class="[ form-group ]">
+              <input type="checkbox" name="contato" id="contato"  formControlName="contato"  autocomplete="off" />
+              <div class="[ btn-group ]">
+                <label for="contato" class="[ btn btn-default ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span> </span>
+                </label>
+                <label for="contato" class="[ btn btn-default active ]">
+                    Contato
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <div [froalaEditor]="options"  formControlName="corpo" [(froalaModel)]="menuForm.value.corpo"></div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col col-md-4 pull-right">
+          <button type="button" class="btn btn-primary" (click)="salvar(menuForm.value)">Salvar</button>
+          <button type="button" class="btn btn-danger" [routerLink]="['/adm/menu']" >Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,111 @@
+<div class="row">
+
+  <p></p>
+  <p> </p>
+
+  <div class="col-md-10 col-md-offset-1">
+    <app-modal #sucessoModal id="sucesso" [showModal]="isModalOpen" [title]="'Sucesso'">
+      <div class="popup-content">
+        <p>Salvo com sucesso?</p>
+      </div>
+      <div class="popup-footer">
+        <button class="btn btn-primary" aria-label="Close" (click)="sucessoModal.hide()">
+        OK
+        </button>
+      </div>
+    </app-modal>
+
+    <div class="panel panel-default panel-table">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col col-xs-6">
+            <h3 class="panel-title">Configuração</h3>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <form [formGroup]="confForm" novalidate>
+          <div class="form-row">
+            <div class="form-group col col-md-12">
+              <mt-input-contaner label="Nome" errorMessage="Campo Obrigatório">
+                <input name="nome" type="text" placeholder="Nome" class="form-control" formControlName="nome" autocomplete="off" required>
+              </mt-input-contaner>
+            </div>
+            <div class="form-group col col-md-12">
+              <textarea name="descricao_breve" placeholder="Descrição Breve" class="form-control" formControlName="descricao_breve" autocomplete="off"
+                required></textarea>
+            </div>
+            <div class="row">
+              <div class="col col-md-3">
+                <div class="[ form-group ]">
+                  <app-link-img formControlName="imagem" [urlUpload]="urlUpload" [urlList]="urlList" [urlDelete]="urlList" [options]="optionsImagem"></app-link-img>
+                </div>
+              </div>
+            </div>
+            <div class="form-group col col-md-12">
+              <mt-input-contaner label="Endereco" errorMessage="Campo Obrigatório">
+                <input name="endereco" type="text" placeholder="Endereco" class="form-control" formControlName="endereco" autocomplete="off"
+                  required>
+              </mt-input-contaner>
+            </div>
+            <div class="form-group col col-md-12">
+              <mt-input-contaner label="Telefone" errorMessage="Campo Obrigatório">
+                <input name="telefone" type="text" placeholder="Telefone" class="form-control" #telefone (keypress)="formatar(telefone)"  formControlName="telefone" autocomplete="off"
+                  required>
+              </mt-input-contaner>
+            </div>
+            <div class="form-group col col-md-12">
+              <mt-input-contaner label="E-mail" errorMessage="Campo Obrigatório">
+                <input name="email" type="text" placeholder="E-Mail" class="form-control" formControlName="email" autocomplete="off" required>
+              </mt-input-contaner>
+            </div>
+            <div class="form-group col col-md-12">
+              <mt-input-contaner label="E-mail Contato" errorMessage="Campo Obrigatório">
+                <input name="email_contato" type="text" placeholder="E-Mail Conta" class="form-control" formControlName="email_contato" autocomplete="off"
+                  required>
+              </mt-input-contaner>
+            </div>
+            <div class="form-group col col-md-12">
+              <mt-input-contaner label="Senha" errorMessage="Campo Obrigatório">
+                <input name="senha" type="password" placeholder="Senha" class="form-control" formControlName="senha_email" autocomplete="off"
+                  required>
+              </mt-input-contaner>
+            </div>
+            <div class="form-group col col-md-12">
+              <mt-input-contaner label="Serviço" errorMessage="Campo Obrigatório">
+                <input name="servico" type="text" placeholder="Serviço Email" class="form-control" formControlName="servico_email" autocomplete="off"
+                  required>
+              </mt-input-contaner>
+            </div>
+            <div class="form-group col col-md-12">
+              <mt-input-contaner label="Assunto" errorMessage="Campo Obrigatório">
+                <input name="assunto" type="text" placeholder="Assunto" class="form-control" formControlName="assunto_email" autocomplete="off"
+                  required>
+              </mt-input-contaner>
+            </div>
+            <div class="form-group col col-md-12">
+              <mt-input-contaner label="Dominio" errorMessage="Campo Obrigatório">
+                <input name="dominio" type="text" placeholder="Dominio" class="form-control" formControlName="dominio" autocomplete="off"
+                  required>
+              </mt-input-contaner>
+            </div>
+          </div>
+          <div class="row">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <div [froalaEditor]="options" formControlName="sobre" [(froalaModel)]="confForm.value.sobre"></div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col col-md-4 pull-right">
+            <button type="button" class="btn btn-primary" (click)="salvar(confForm.value, sucessoModal)">Salvar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

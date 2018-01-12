@@ -1,0 +1,41 @@
+<div class="col-lg-offset-2">
+  <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+  <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+  <form [formGroup]="contatoForm" novalidate>
+    <div class="row control-group">
+      <div class="form-group col-xs-12 floating-label-form-group controls">
+        <label for="name">Nome</label>
+        <input type="text" class="form-control" formControlName="nome" placeholder="Nome" id="name" required data-validation-required-message="Por favor entre com o nome.">
+        <p class="help-block text-danger"></p>
+      </div>
+    </div>
+    <div class="row control-group">
+      <div class="form-group col-xs-12 floating-label-form-group controls">
+        <label for="email">E-Mail</label>
+        <input type="email" class="form-control" formControlName="email" placeholder="E-mail" id="email" required data-validation-required-message="Por favor entre com o e-mail.">
+        <p class="help-block text-danger"></p>
+      </div>
+    </div>
+    <div class="row control-group">
+      <div class="form-group col-xs-12 floating-label-form-group controls">
+        <label for="phone">Telefone</label>
+        <input type="tel" class="form-control" formControlName="telefone" placeholder="Telefone" id="phone" #telefone (keypress)="formatar(telefone)" required data-validation-required-message="Por favor entre com o telefone.">
+        <p class="help-block text-danger"></p>
+      </div>
+    </div>
+    <div class="row control-group">
+      <div class="form-group col-xs-12 floating-label-form-group controls">
+        <label for="message">Mensagem</label>
+        <textarea rows="5" class="form-control" placeholder="Mensagem" formControlName="message" id="message" required data-validation-required-message="Por favor entre com a mensagem."></textarea>
+        <p class="help-block text-danger"></p>
+      </div>
+    </div>
+    <br>
+    <div id="success"></div>
+    <div class="row">
+      <div class="form-group col-xs-12">
+        <button type="submit" class="btn btn-success btn-lg" (click)="enviar(contatoForm.value)" [disabled]="!contatoForm.valid">Enviar</button>
+      </div>
+    </div>
+  </form>
+</div>

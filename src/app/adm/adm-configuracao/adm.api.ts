@@ -1,0 +1,1 @@
+export const senha = '$#%$INDU#VRET$';

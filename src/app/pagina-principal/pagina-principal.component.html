@@ -1,0 +1,50 @@
+<!-- Portfolio Grid Section -->
+<div *ngFor="let menu of paginas; let i = index">
+  <section [id]="menu?.link" [class.success]="((i%2) === 1)">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2>{{menu.descricao}}</h2>
+          <hr class="star-primary">
+        </div>
+      </div>
+      <div class="row" *ngIf="menu?.lista_produto">
+        <div class="col-sm-4 portfolio-item" *ngFor="let prod of produtos; let count = index">
+          <app-produto [produto]="prod" [modal]="'portfolioModal'+count"></app-produto>
+        </div>
+      </div>
+      <div class="row">
+        <div [innerHTML]="menu.corpo | safeHtml"></div>
+      </div>
+    </div>
+  </section>
+  <div *ngIf="menu.lista_produto">
+    <div class="portfolio-modal modal fade" *ngFor="let prod of produtos; let count = index" [id]="'portfolioModal'+count" tabindex="-1"
+      role="dialog" aria-hidden="true">
+      <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+          <div class="lr">
+            <div class="rl">
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+              <div class="modal-body">
+                <h2>{{prod?.nome}}</h2>
+                <hr class="star-primary">
+                <img [src]="prod?.imagem" class="img-responsive img-centered" alt="">
+                <p [innerHTML]="prod?.descricao"></p>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Fechar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="menu.contato">
+    <app-contato></app-contato>
+  </div>
+</div>

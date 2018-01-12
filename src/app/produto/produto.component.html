@@ -1,0 +1,8 @@
+<a [href]="'#'+modal" class="portfolio-link" data-toggle="modal" *ngIf="produto">
+  <div class="caption">
+    <div class="caption-content">
+      <i class="fa fa-search-plus fa-3x">{{produto?.name}}</i>
+    </div>
+  </div>
+  <img [src]="produto?.imagem" class="img-responsive" [alt]="produto?.name">
+</a>

@@ -1,0 +1,78 @@
+<div class="row">
+
+  <p></p>
+  <p> </p>
+
+  <div class="col-md-10 col-md-offset-1">
+
+    <div class="panel panel-default panel-table">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col col-xs-6">
+            <h3 class="panel-title">Cadastro de Produtos</h3>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <form [formGroup]="produtoForm" novalidate>
+          <div class="form-row">
+            <div class="form-group col col-md-12">
+              <mt-input-contaner label="Nome" errorMessage="Campo Obrigatório">
+                <input name="nome" type="text" placeholder="Nome" class="form-control" formControlName="nome" autocomplete="off" required>
+              </mt-input-contaner>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col col-md-12">
+              <mt-input-contaner label="Ordem" errorMessage="Campo Obrigatório">
+                <input name="order" type="text" placeholder="Ordem" class="form-control" formControlName="order" autocomplete="off" required>
+              </mt-input-contaner>
+            </div>
+          </div>
+          <div class="form-row">  
+            <div class="col col-md-10">
+              <div class="[ form-group ]">
+                <input type="checkbox" name="ativo" id="ativo" formControlName="ativo" autocomplete="off" />
+                <div class="[ btn-group ]">
+                  <label for="ativo" class="[ btn btn-default ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span> </span>
+                </label>
+                  <label for="ativo" class="[ btn btn-default active ]">
+                    Ativo
+                </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-md-3">
+              <div class="[ form-group ]">
+                <app-link-img formControlName="imagem" 
+                            [urlUpload]="urlUpload"
+                            [urlList]="urlList" 
+                            [urlDelete]="urlList"
+                            [options]="optionsImagem"></app-link-img>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <div [froalaEditor]="options" formControlName="descricao" [(froalaModel)]="produtoForm.value.descricao"></div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col col-md-4 pull-right">
+            <button type="button" class="btn btn-primary" (click)="salvar(produtoForm.value)">Salvar</button>
+            <button type="button" class="btn btn-danger" [routerLink]="['/adm/produto']">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

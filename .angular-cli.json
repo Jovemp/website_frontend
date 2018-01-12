@@ -19,9 +19,20 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "./vendor/bootstrap/css/bootstrap.min.css",
+        "./vendor/freelancer/css/freelancer.min.css",
+        "./vendor/font-awesome/css/font-awesome.min.css",
+        "styles.css",
+        "../node_modules/froala-editor/css/froala_editor.pkgd.min.css",
+        "../node_modules/froala-editor/css/froala_style.min.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "./vendor/jquery/jquery.min.js",
+        "./vendor/jquery/jquery.easing.min.js",
+        "./vendor/bootstrap/js/bootstrap.min.js",
+        "./vendor/freelancer/js/freelancer.min.js",
+        "../node_modules/froala-editor/js/froala_editor.pkgd.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

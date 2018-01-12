@@ -1,0 +1,32 @@
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom" [class.affix]="navIsFixed" [class.affix-top]="!navIsFixed">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+      <a class="navbar-brand" href="#page-top">{{principal?.nome}}</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <app-menu></app-menu>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>
+
+<!-- Header -->
+<header>
+  <div class="container" id="maincontent" tabindex="-1">
+    <div class="row">
+      <div class="col-lg-12">
+        <img class="img-responsive" *ngIf="principal" [src]="principal?.imagem" alt="">
+        <div class="intro-text">
+          <h1 class="name">{{principal?.nome}}</h1>
+          <hr class="star-light">
+          <span class="skills">{{principal?.descricao_breve}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,29 @@
+<div class="container">
+  <img [src]="imagem" alt="" class="image" style="width:100%">
+  <div class="middle">
+    <span class="fa-stack fa-lg" (click)="file.click()" *ngIf="options?.buttonUpload">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-upload fa-stack-1x fa-inverse" aria-hidden="true" title="Upload"></i>
+    </span>
+
+    <a href="#bannerformmodal" data-toggle="modal" data-target="#bannerformmodal" *ngIf="options?.buttonBrowse">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-folder fa-stack-1x fa-inverse" aria-hidden="true" title="Browser"></i>
+      </span>
+    </a>
+    <span class="fa-stack fa-lg" (click)="select(imagem)" *ngIf="options?.buttonAdd">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-plus fa-stack-1x fa-inverse" aria-hidden="true" title="Inserir"></i>
+    </span>
+    <span class="fa-stack fa-lg" (click)="delete()" *ngIf="options?.buttonRemove">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-trash fa-stack-1x fa-inverse" aria-hidden="true" title="Excluir"></i>
+    </span>
+  </div>
+  <input type="file" name="file" #file (change)="upload($event)" accept="image/jpeg, image/jpg, image/png" style="visibility: hidden">
+</div>
+<app-dialog-link-img [urlList]='urlList' 
+                     [urlDelete]="urlDelete"
+                     [imagens]="imagens"
+                     (onSelect)="imagemSelect($event)"></app-dialog-link-img>
